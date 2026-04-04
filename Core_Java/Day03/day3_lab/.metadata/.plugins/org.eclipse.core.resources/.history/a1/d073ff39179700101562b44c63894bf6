@@ -1,0 +1,23 @@
+package coms.tester;
+
+import java.util.Scanner;
+
+import coms.developers.geometry.Point2D;
+
+
+public class TestPoint {
+	public static void main(String[] args) {
+		Scanner sc =new Scanner(System.in);
+		System.out.println("how many points to plot?");
+		Point2D[]points=new Point2D[sc.nextInt()];
+		insertPoint(points,4,new Point2D(10,20)) ;
+		insertPoint(points, 7, new Point2D(50,60));
+		
+		 for (int i = 0; i < points.length; i++) {
+	            if (points[i] != null) {
+	                System.out.println("Index " + i + " -> " + points[i].show());
+	            } else {
+	                System.out.println("Index " + i + " -> empty");
+	}
+
+

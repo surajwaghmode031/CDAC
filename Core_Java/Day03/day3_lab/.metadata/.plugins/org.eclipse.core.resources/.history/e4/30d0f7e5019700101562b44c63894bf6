@@ -1,0 +1,5 @@
+package coms.developers.geometry;
+
+public class Point2D {
+
+}

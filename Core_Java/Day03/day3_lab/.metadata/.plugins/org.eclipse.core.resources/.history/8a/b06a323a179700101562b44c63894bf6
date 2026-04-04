@@ -1,0 +1,40 @@
+package coms.developers.geometry;
+
+
+public class Point2D{
+protected int x;
+protected int y;
+
+public Point2D(int x,int y){
+this.x=x;
+this.y=y;
+}
+
+public String show(){
+return "x= "+x+" "+"y= "+y;
+}
+
+public Boolean isEqual(Point2D p){
+if(this.x==p.x &&this.y==p.y){
+return true;
+}
+else
+return false;
+}
+
+public double calculateDistance(Point2D point) {
+int dx = point.x - this.x;
+int dy = point.y - this.y;
+return Math.sqrt(dx * dx + dy * dy);
+}
+public  void insertPoint(Point2D[] arr, int index, Point2D p) {
+    if (index < 0 || index >= arr.length) {
+        System.out.println("Error: Index " + index + " is out of bounds!");
+    } else if (arr[index] != null) {
+        System.out.println("Error: Index " + index + " already has a point: " + arr[index].show());
+    } else {
+        arr[index] = p;
+        System.out.println("Point inserted at index " + index);
+    }
+}
+}
