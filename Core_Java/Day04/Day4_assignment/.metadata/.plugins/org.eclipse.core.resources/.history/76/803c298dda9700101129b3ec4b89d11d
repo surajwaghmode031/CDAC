@@ -1,0 +1,34 @@
+package com.tester;
+import com.core.BankAccount;
+import com.core.CurrentAccount;
+import com.core.SavingAccount;
+
+public class TestBank {
+	 public static void main(String[] args) {
+		 //upcasting
+	        BankAccount sa1 = new SavingAccount(101, 5000, "suraj", "92243210", 5);
+	        sa1.depositeAmount(2000);
+	        //downcasting
+	        ((SavingAccount) sa1).applyInterest();
+	        sa1.withdrawAmount(1000);
+	        System.out.println("\n--- Saving Account Summary ---");
+	        System.out.println(sa1.getAccountSummary());
+
+	        CurrentAccount ca = new CurrentAccount(102, 3000, "sourabh", "9123456780", 2000);
+	        ca.withdrawAmount(2500);
+	        ca.useOverdraftFacility(1500);
+	        System.out.println("\n--- Current Account Summary ---");
+	        System.out.println(ca.getAccountSummary());
+	        
+	        SavingAccount sa2 = new SavingAccount(101, 5000, "suraj", "92243210", 5);
+	        sa2.depositeAmount(2000);
+	         sa2.applyInterest();
+	        sa2.withdrawAmount(1000);
+	        System.out.println("\n--- Saving Account Summary ---");
+	        System.out.println(sa2.getAccountSummary());
+	    }
+	}
+	
+
+
+}
