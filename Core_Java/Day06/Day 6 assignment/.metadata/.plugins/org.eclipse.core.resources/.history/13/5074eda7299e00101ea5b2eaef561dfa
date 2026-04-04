@@ -1,0 +1,38 @@
+package com.cdac.core;
+
+public class GrowableStack implements Stack {
+	private Customer[] customers;
+	private int top;
+	
+	
+
+	public GrowableStack() {
+		customers = new Customer[STACK_SIZE];
+	    top = -1;
+	}
+
+	@Override
+	public void push(Customer c) {
+		if (top == customers.length - 1) {
+            Customer[] newArr = new Customer[customers.length * 2];
+            System.arraycopy(customers, 0, newArr, 0, customers.length);
+            customers = newArr;
+        }
+        customers[++top] = c;
+    }
+		
+	}
+
+	@Override
+	public Customer pop() {
+		if (top == -1) {
+            System.out.println("Stack Underflow!");
+            return null;
+        } else {
+            return customers[top--];
+	    }
+		
+	}
+	
+
+}
