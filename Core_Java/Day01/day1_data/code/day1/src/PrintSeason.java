@@ -6,7 +6,8 @@ public static void main(String[] args) {
 	boolean exit=false;
 	while(!exit) {
 		System.out.println("Enter month no , 1-12");
-		switch(sc.nextInt()) {
+		int choice = sc.nextInt();
+		switch(choice)) {
 			 case 11:
 			 case 12 :
 			 case 1 :
