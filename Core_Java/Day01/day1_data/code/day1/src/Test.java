@@ -1,16 +1,14 @@
 //import java.lang.*;
 /* 
- All java classes can implicltyl access ALL classes from java.lang 
- package.
- package => collection of classes , mapped to folders
- System  , String : java.lang
+ All java classes can implicltyl access ALL classes from java.lang package.
+ package => collection of classes , mapped to folders   e.g  System  , String : java.lang
  default access specifier  : package private (default) => visible within the same package(folder)
  legal access specifiers for java classes - default | public
  public class - accessible from anywhere !
  Rules
  1. Default class name need not match with src file name.
  2. Single src file can contain multiple default classes.
- 3. Single src file can contain only 1 public class , name of the public class name must match with src file name
+ 3. Single src file can contain only 1 public class , name of the public class name must be match with src file name
  eg : public class TestMe - must be saved in TestMe.java
 */
  class HelloWorld {
