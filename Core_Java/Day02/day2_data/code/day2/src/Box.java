@@ -3,12 +3,12 @@ class Box {
   private double width;
   private double depth;
   private double height;
-   //parameterized constructro to init complete state
+   //parameterized constructor to init complete state
    Box(double w,double d,double height)
    {
      this.width=w;
 	 this.depth=d;
-	 this.height=height;//this : keyword mandatory
+	 this.height=height;//this : keyword mandatory -> to avoid name conflict
    }
    //add instance method to return box dimensions in string form
    String getBoxDimensions()
