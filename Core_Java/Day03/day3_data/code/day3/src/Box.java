@@ -16,7 +16,7 @@ class Box {
    Box(double side)
    {
 	//    this.width=depth=height=side;
-	//Instead of repeating the same code , invoke another ctor of the same class - this keyword
+	//Instead of repeating the same code , invoke another ctor of the same class -> this keyword
 	this(side,side,side); //calls the 1st ctor.
    }
 	
