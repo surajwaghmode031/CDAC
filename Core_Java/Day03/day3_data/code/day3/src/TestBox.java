@@ -8,7 +8,7 @@ class TestBox
   Box cube=new Box(sc.nextDouble());
   System.out.println(cube.getBoxDimensions());
   System.out.println(cube.getVolume());
-  //to test ctor chaining - create dummy box , where all dims are inited to -1
+  //to test constructor chaining - create dummy box , where all dims are inited to -1
   Box dummyBox=new Box();
   System.out.println(dummyBox.getBoxDimensions());//-1 -1 -1
   
