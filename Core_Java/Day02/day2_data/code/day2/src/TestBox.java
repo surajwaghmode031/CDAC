@@ -2,14 +2,14 @@ import java.util.Scanner;
 class TestBox
 {
   public static void main(String[] args) {
-  //create scanner class instance to wrap console i/public
+  //create scanner class instance to wrap console i/p 
   Scanner sc=new Scanner(System.in);
   System.out.println("Enter Box dimensions - w d h");
-  int data=100;
+  int data=100; // primitive type of variable
   Box b1;//b1 -> class type of reference : local var.
-  //System.out.println(b1);javac err : un initialzed var.
+  //System.out.println(b1);javac err : un initialzed var  -> we must need to initialization 
   b1=new Box(sc.nextDouble(),sc.nextDouble(),sc.nextDouble());
-  System.out.println(b1);
+  System.out.println(b1);  // no err : data initialize
   //display box dims
   System.out.println(b1.getBoxDimensions());
   //display box volume
@@ -21,8 +21,10 @@ class TestBox
   System.out.println(b3);
    System.out.println(b3.getBoxDimensions());
    b1=null;
-  // System.out.println(b1.getBoxDimensions());//java.lang.NullPointerException
-   b3=null;
+  // System.out.println(b1.getBoxDimensions());//  err -> java.lang.NullPointerException
+    
+   b3=null;  // one object mark for gc
+    
    //what will happen in memory diagram ? b3 : de referenced
   // System.out.println(b3.getBoxDimensions());
    System.out.println("closing scanner ....");
