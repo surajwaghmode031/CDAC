@@ -1,5 +1,5 @@
+// this is not a best solution but this program does in this why for understanding only 
 import java.util.Scanner;
-
 public class FoodMenu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
