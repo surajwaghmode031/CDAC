@@ -5,10 +5,12 @@ public Tank(int level){
 this.level=level;
 }
 
+  // setter
 public void setLevel(int level1){
 level= level1;
 }
 
+  // getter
 public int getLevel(){
 return level;
 }
