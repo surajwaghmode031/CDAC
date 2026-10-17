@@ -29,7 +29,7 @@ public class Event0rganizer {
 				choice = sc.nextInt();
 				
 				switch(choice) {
-//				for creating the saving account with default balance
+              //for creating the saving account with default balance
 			case 1: {
 				System.out.println("Enter the FirstName : ");
 				String firstName = sc.nextLine();
@@ -45,6 +45,9 @@ public class Event0rganizer {
 				break;
 
 				}
+
+						
+						
 			case 2: {
 
 				System.out.println("Enter the FacultyName: ");
@@ -64,6 +67,9 @@ public class Event0rganizer {
 
 				break;
 			}
+
+						
+						
 			case 3:{
 				if(persons==null) {
 					System.out.println("theier is no person detail to display");
@@ -76,7 +82,8 @@ public class Event0rganizer {
 				  break;
 				}
 				
-			
+
+						
 			case 4:{
 				if(persons==null) {
 					System.out.println("theier is no person detail to display");
@@ -92,6 +99,7 @@ public class Event0rganizer {
 							if(s.getStudentId()==id) {
 								found = true;
 								System.out.println("participate Student is found "+s.toString());
+								break;
 							}
 						}
 					if(p instanceof Faculty) {
@@ -99,6 +107,7 @@ public class Event0rganizer {
 						if(f.getFacultyId()==id) {
 							found = true;
 							System.out.println("particapate faculty is found "+f.toString());
+							break;
 						}
 					}
 					}
@@ -108,28 +117,39 @@ public class Event0rganizer {
 				}
 				break;
 			}
-			case 5:{
-	
 
+
+						
+			//Evaluate Student 
+			case 5:{
 				System.out.print("Enter Student ID to evaluate: ");
 				int id = sc.nextInt();
 				System.out.print("EnterGrade): ");
-				char grade = sc.next().charAt(0);
-
+				char grade = sc.next().charAt(0);    //charAt(index) returns the character at the specified index.
+				                                     // Why is it used in your program? -> - sc.next() reads "A" as a String.
+                                                                                          //- .charAt(0) extracts 'A' as a char.
+                                                                                          // - grade stores the character 'A'.
+                                                  // This is useful because your setGrade() method accepts a char parameter.
+				boolean found = false;
+				
 				for(Person p : persons) {
 						if(p instanceof Student) {
 						Student s = (Student)p;
 						if(s.getStudentId()==id) {
 							s.setGrade(grade);
 							System.out.println("Evaluation recorded: " + s.toString());
-						}else {
+						    found = true;
+							break;
+						}
+						}	
+					}
+				if(!found){
 							System.out.println("Participants not Found ");
 						}
-						}
-						
-					}
 					break;
 				}
+
+						
 				
 				case 6:{
 					System.out.print("Enter Student ID to send feedback: ");
@@ -137,6 +157,9 @@ public class Event0rganizer {
 					System.out.print("Enter faculty ID and name : ");
 					int id1 = sc.nextInt();
 					String fname= sc.nextLine();
+					
+					boolean found = false;
+					
 					for(Person p: persons ) {
 						if ( p instanceof Faculty) {
 							Faculty f = (Faculty)p;
@@ -146,25 +169,22 @@ public class Event0rganizer {
 										+"   3.Engaging lectures and encourages student participation.";
 								f.setComment(s);
 								f.toString();
+								found=true;
 							}
 						}
 					}
+					if(!found){
+							System.out.println("Participants not Found ");
+					}
 					break;
-					
 				}
+
+						
 				case 7:{
 					System.out.println("Exit......!");
 				}
-
-
-			
-			
 				}
 			 
 		 }while(choice!=7);
-
-	
-		 
-	 
 	}
 }
