@@ -5,6 +5,7 @@ public class BankAccount {
 	private double balance;
 	private String customerName;
 	private String phoneNumber;
+	
 	public BankAccount(int accountNumber, double balance, String customerName, String phoneNumber) {
 		super();
 		this.accountNumber = accountNumber;
@@ -12,7 +13,8 @@ public class BankAccount {
 		this.customerName = customerName;
 		this.phoneNumber = phoneNumber;
 	}
-	public void depositeAmount(double amount) {
+	
+	public void depositAmount(double amount) {
 	    double a=0;
 		if(amount>0) {
 			 a = getBalance()+amount;
@@ -22,6 +24,7 @@ public class BankAccount {
 		else
 		System.out.println("Enter valid Amount..!");
 	}
+	
 	public void withdrawAmount(double w) {
 		if(w > 0 && getBalance()>w) {
 			double d=getBalance()-w;
@@ -31,6 +34,7 @@ public class BankAccount {
 			System.out.println("Enter valid Amount..!");  
 			
 		}
+	
 	public String getAccountSummary() {
 		return  " accountNumber="+ accountNumber+"customerName="+customerName +"balance="+balance+"phoneNumber="+phoneNumber;
 		
@@ -40,6 +44,7 @@ public class BankAccount {
 	public double getBalance() {
 		return balance;
 	}
+	
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
