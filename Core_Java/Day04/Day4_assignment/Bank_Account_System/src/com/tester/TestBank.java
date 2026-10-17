@@ -7,7 +7,7 @@ public class TestBank {
 	 public static void main(String[] args) {
 		 //upcasting
 	        BankAccount sa1 = new SavingAccount(101, 5000, "suraj", "92243210", 5);
-	        sa1.depositeAmount(2000);
+	        sa1.depositAmount(2000);
 	        //downcasting
 	        ((SavingAccount) sa1).applyInterest();
 	        sa1.withdrawAmount(1000);
@@ -21,7 +21,7 @@ public class TestBank {
 	        System.out.println(ca.getAccountSummary());
 	        
 	        SavingAccount sa2 = new SavingAccount(101, 5000, "suraj", "92243210", 5);
-	        sa2.depositeAmount(2000);
+	        sa2.depositAmount(2000);
 	         sa2.applyInterest();
 	        sa2.withdrawAmount(1000);
 	        System.out.println("\n--- Saving Account Summary ---");
