@@ -7,8 +7,8 @@ public class SavingAccount extends BankAccount {
 	super(accountNumber, balance, customerName, phoneNumber);
 	this.interestRate = interestRate;
   }
-public void applyInterest() {
 	
+public void applyInterest() {
 	double interest=getBalance()*(interestRate/100);
 	double i=getBalance()+interest;
 	setBalance(i);
