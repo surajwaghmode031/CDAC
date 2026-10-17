@@ -2,6 +2,7 @@ package com.core;
 
 public class CurrentAccount extends BankAccount {
 	private double overdraftLimit;
+	
 	public CurrentAccount(int accountNumber, double balance, String customerName, String phoneNumber,
 			double overdraftLimit) {
 		super(accountNumber, balance, customerName, phoneNumber);
