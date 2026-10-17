@@ -13,7 +13,7 @@ public class Event0rganizer {
 		
 		Person[] persons= new Person [100];
 		
-		int index =1;
+		int index =0;
 		 int choice;
 		 do {
 			 System.out.println("\n");
@@ -71,7 +71,7 @@ public class Event0rganizer {
 						
 						
 			case 3:{
-				if(persons==null) {
+				if(index==0) {
 					System.out.println("theier is no person detail to display");
 					break;
 				}
@@ -85,7 +85,7 @@ public class Event0rganizer {
 
 						
 			case 4:{
-				if(persons==null) {
+				if(index==0) {
 					System.out.println("theier is no person detail to display");
 					break;
 				}
@@ -122,6 +122,10 @@ public class Event0rganizer {
 						
 			//Evaluate Student 
 			case 5:{
+				if(index==0) {
+					System.out.println("theier is no student to  Evaluate Student ");
+					break;
+				}
 				System.out.print("Enter Student ID to evaluate: ");
 				int id = sc.nextInt();
 				System.out.print("EnterGrade): ");
@@ -152,6 +156,10 @@ public class Event0rganizer {
 						
 				
 				case 6:{
+					if(index==0) {
+					System.out.println("theier is no student to  Submit FeedBack ");
+					break;
+				}
 					System.out.print("Enter Student ID to send feedback: ");
 					int id = sc.nextInt();
 					System.out.print("Enter faculty ID and name : ");
@@ -168,7 +176,7 @@ public class Event0rganizer {
 										+ " 2.Provides clear explanations and makes complex topics easy to understand.\n"
 										+"   3.Engaging lectures and encourages student participation.";
 								f.setComment(s);
-								f.toString();
+								System.out.println( f.toString());
 								found=true;
 							}
 						}
