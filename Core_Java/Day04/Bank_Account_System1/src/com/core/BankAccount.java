@@ -36,7 +36,7 @@ public void withdrawAmount(double w) {
 		
 	}
 
-public void deposite(double amount) {
+public void deposit(double amount) {
 	  if(amount>0) {
 		 double balance= getBalance()+amount;
 		 setBalance(balance);
