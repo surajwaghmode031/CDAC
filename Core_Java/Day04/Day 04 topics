@@ -1,6 +1,8 @@
 Day 04 topics
  1. Array memory picture
  2. Dynamic initialazation 
- 2. static keyword
- 3. Inheritance
- 4. Polymorphism
+ 3. static keyword (static data member and static method)
+ 4. this keyword
+ 5. Inheritance
+ 6. Polymorphism
+
