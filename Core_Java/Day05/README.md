@@ -1,160 +1,332 @@
 # Day 05 – Core Java
 
-## Topics Covered
+## 1. Method Overloading
 
-### 1. Method Overloading
+- Method overloading allows a class to have multiple methods with the same name but different parameter lists.
+- It is an example of compile-time polymorphism (static polymorphism).
+- Method overloading can be achieved by changing:
+  - Number of parameters.
+  - Data types of parameters.
+  - Order of parameters.
+- Changing only the return type does not achieve method overloading.
+- The compiler determines which overloaded method to execute based on the arguments passed.
+- Implemented overloaded methods using different parameter types and numbers of arguments.
 
-- Studied method overloading as a form of compile-time polymorphism.
-- Learned how multiple methods can have the same name with different parameter lists.
-- Practiced overloading methods by changing:
-  - Number of parameters
-  - Type of parameters
-  - Order of parameters
-- Understood that changing only the return type does not achieve method overloading.
-- Practiced calling overloaded methods with different arguments.
+**Example:**
 
-### 2. Method Overriding
+```java
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
 
-- Studied method overriding as a feature of inheritance and runtime polymorphism.
-- Learned how a child class provides its own implementation of an inherited method.
-- Understood the relationship between:
-  - **Overridden Method:** Method defined in the parent class.
-  - **Overriding Method:** Method redefined in the child class.
-- Practiced overriding methods using parent and child classes.
+    double add(double a, double b) {
+        return a + b;
+    }
 
-#### a. Private Methods
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+```
 
-- Learned that private methods are not inherited and cannot be overridden.
-- Understood that declaring a method with the same signature in a child class creates a separate method.
+## 2. Method Overriding
 
-#### b. Static Methods
+- Method overriding occurs when a child class provides its own implementation of an inherited instance method with the same signature.
+- It is an important feature of inheritance and runtime polymorphism.
+- **Overridden Method:** The method defined in the parent class.
+- **Overriding Method:** The method redefined in the child class.
+- Implemented method overriding using parent and child classes and tested method execution through parent-class references.
 
-- Studied static method hiding.
-- Understood that static methods are resolved based on the reference type rather than the runtime object type.
-- Differentiated static method hiding from instance method overriding.
+**Example:**
 
-#### c. Final Methods
+```java
+class Parent {
+    void display() {
+        System.out.println("Parent class");
+    }
+}
 
-- Learned that final methods cannot be overridden in child classes.
-- Understood how the `final` keyword restricts method modification through inheritance.
+class Child extends Parent {
+    @Override
+    void display() {
+        System.out.println("Child class");
+    }
+}
+```
 
-#### d. Access Specifiers in Method Overriding
+### A. Private Method
 
-- Studied access-level rules while overriding methods.
-- Understood that an overriding method cannot have more restrictive access than the overridden method.
-- Practiced overriding methods with different access levels.
-- Learned the role of `public`, `protected`, default, and `private` access.
+- Private methods are accessible only within the class in which they are declared.
+- Private methods are not inherited and cannot be overridden.
+- If a child class declares a method with the same signature as a private parent method, it is treated as a separate method.
+- Practised accessing private methods within their declaring class and testing methods with the same signature in child classes.
 
-### 3. Method Binding and Method Binding Resolution
+### B. Static Method
 
-- Studied method binding as the process of connecting a method call to its actual implementation.
-- Learned two types of method binding:
+- Static methods belong to the class rather than individual objects.
+- Static methods cannot be overridden.
+- When a child class declares a static method with the same signature as the parent class, it is called **method hiding**.
+- Static method resolution depends on the reference type, not the actual object type.
+- Implemented examples to understand the difference between static method hiding and instance method overriding.
 
-#### a. Static Binding (Early Binding)
+### C. Final Method
 
-- Understood that method calls are resolved at compile time.
-- Studied static, private, and final methods in relation to static binding.
-- Practiced identifying method calls resolved using the reference type.
+- A method declared using the `final` keyword cannot be overridden by a child class.
+- The `final` keyword prevents modification of the inherited method implementation through overriding.
+- Practised declaring final methods and understanding compiler restrictions when attempting to override them.
 
-#### b. Dynamic Binding (Late Binding)
+**Example:**
 
-- Learned how overridden instance methods are resolved at runtime.
-- Understood that the actual object type determines which overridden method is executed.
-- Practiced dynamic method dispatch using parent-class references and child-class objects.
+```java
+class Parent {
+    final void display() {
+        System.out.println("Parent method");
+    }
+}
+```
 
-### 4. Virtual Keyword
+### D. Access Specifiers in Method Overriding
+
+- Access specifiers control the visibility of class members.
+- Java provides four access levels:
+  - `public`
+  - `protected`
+  - Default (package-private)
+  - `private`
+- An overriding method cannot reduce the visibility of the overridden method.
+- A `public` method must remain public when overridden.
+- A `protected` method can be overridden with protected or public access.
+- A default-access method can be overridden with default, protected, or public access, subject to package rules.
+- Private methods cannot be overridden.
+- Practised overriding methods with different access levels and understanding their visibility rules.
+
+## 3. Method Binding and Method Binding Resolution
+
+- Method binding is the process of connecting a method call to its actual method implementation.
+- Studied two types of method binding: static binding and dynamic binding.
+
+### A. Static Binding (Early Binding)
+
+- Method resolution takes place at compile time.
+- Common examples include static, private, and final methods.
+- Method overloading is also resolved at compile time.
+- Method calls are resolved based on compile-time information, including the reference type and declared method signature.
+- Practised identifying method calls resolved during compilation.
+
+### B. Dynamic Binding (Late Binding)
+
+- Method resolution takes place at runtime.
+- It applies to overridden instance methods.
+- The actual object type determines which overridden method implementation executes.
+- It is also known as dynamic method dispatch.
+- Implemented examples using parent-class references and child-class objects to understand runtime method resolution.
+
+**Example:**
+
+```java
+class Parent {
+    void show() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {
+        System.out.println("Child");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Parent obj = new Child();
+        obj.show();
+    }
+}
+```
+
+**Output:**
+
+```text
+Child
+```
+
+## 4. Virtual Keyword
 
 - Studied the concept of virtual methods in object-oriented programming.
-- Understood how virtual methods support runtime polymorphism in languages such as C++.
-- Compared virtual method behaviour with Java's instance method overriding.
-- Learned that Java instance methods are dynamically dispatched by default, except for methods that cannot be overridden, such as static, private, and final methods.
+- In C++, the `virtual` keyword is used to achieve runtime polymorphism through method overriding.
+- Java does not require an explicit `virtual` keyword.
+- Java instance methods are dynamically dispatched by default when overridden.
+- Static methods, private methods, and final methods do not participate in runtime method overriding.
+- Compared virtual method behaviour in C++ with dynamic method dispatch in Java.
 
-### 5. Polymorphism
+## 5. Polymorphism
 
-- Studied polymorphism as the ability to represent different behaviours through a common method name or reference.
+- Polymorphism means one name having multiple forms or behaviours.
+- It allows the same method name or reference to represent different behaviours depending on the context.
+- Studied two major types of polymorphism in Java.
 
-#### a. Static Polymorphism
+### A. Static Polymorphism (Compile-Time Polymorphism)
 
-- Studied compile-time polymorphism using method overloading.
-- Understood how the compiler determines which overloaded method to execute.
-- Practiced implementing overloaded methods with different parameter lists.
+- Achieved through method overloading.
+- The compiler determines which method to execute during compilation.
+- Method selection depends on the method signature and arguments passed.
+- Implemented overloaded methods with different parameter counts and data types.
 
-#### b. Dynamic Polymorphism
+### B. Dynamic Polymorphism (Runtime Polymorphism)
 
-- Studied runtime polymorphism using method overriding.
-- Understood dynamic method dispatch.
-- Practiced using parent-class references to refer to child-class objects.
-- Learned how runtime polymorphism improves flexibility and extensibility.
+- Achieved through method overriding.
+- Method execution is determined at runtime based on the actual object type.
+- Requires inheritance and overridden instance methods.
+- Supports dynamic method dispatch.
+- Implemented parent-child class examples using parent references to hold child-class objects.
 
-### 6. Annotations
+## 6. Annotations
 
-- Studied annotations as metadata that provide information about Java code.
-- Learned commonly used built-in annotations:
-  - `@Override`
-  - `@Deprecated`
-  - `@SuppressWarnings`
-  - `@FunctionalInterface`
-- Practiced using `@Override` to indicate that a child-class method overrides a parent-class method.
-- Understood how annotations help the compiler and development tools identify and process additional information.
+- Annotations provide metadata about Java code.
+- They give additional information to the compiler, development tools, and runtime frameworks.
+- Studied commonly used built-in Java annotations:
 
-### 7. Upcasting and Downcasting
+| Annotation | Purpose |
+|---|---|
+| `@Override` | Indicates that a method overrides a parent-class method. |
+| `@Deprecated` | Marks an element as outdated or discouraged for use. |
+| `@SuppressWarnings` | Suppresses specified compiler warnings. |
+| `@FunctionalInterface` | Indicates that an interface is intended to have one abstract method. |
 
-- Studied type casting between parent and child class references.
+- Practised using the `@Override` annotation while implementing method overriding.
+- Understood how annotations help identify incorrect method declarations and provide metadata.
 
-#### a. Upcasting
+**Example:**
 
-- Learned how to assign a child-class object to a parent-class reference.
-- Understood that upcasting is performed automatically.
-- Practiced accessing inherited and overridden methods through parent references.
-- Explored how upcasting supports runtime polymorphism.
+```java
+class Parent {
+    void display() {
+        System.out.println("Parent");
+    }
+}
 
-#### b. Downcasting
+class Child extends Parent {
+    @Override
+    void display() {
+        System.out.println("Child");
+    }
+}
+```
 
-- Learned how to convert a parent-class reference back into a child-class reference.
-- Understood that downcasting requires explicit casting.
-- Practiced using the `instanceof` operator to check object types before downcasting.
-- Learned about `ClassCastException` when an invalid downcast is performed.
+## 7. Upcasting and Downcasting
 
-### 8. instanceof Operator
+- Studied type casting between parent-class and child-class references.
+- Understood how upcasting and downcasting work with inheritance and runtime polymorphism.
 
-- Studied the `instanceof` operator in Java.
-- Learned how to check whether an object is an instance of a particular class or implements a particular interface.
-- Understood that `instanceof` returns a boolean value (`true` or `false`).
-- Practiced checking object types before performing downcasting.
-- Explored the relationship between inheritance, upcasting, downcasting, and `instanceof`.
-- Learned that checking a `null` reference using `instanceof` returns `false`.
+### A. Upcasting
 
-## Practical Work
+- Upcasting means converting a child-class reference into a parent-class reference.
+- It happens automatically and does not require explicit casting.
+- It is commonly used to achieve runtime polymorphism.
+- Through a parent reference, directly accessible members are limited to those declared or inherited by the parent type.
+- Overridden instance methods still execute according to the actual object type.
+- Practised assigning child-class objects to parent-class references.
 
-- Implemented method overloading examples.
-- Practiced method overriding using parent and child classes.
-- Tested private, static, and final method behaviour.
-- Implemented static binding and dynamic binding examples.
-- Practiced runtime polymorphism through method dispatch.
-- Explored Java's method overriding behaviour in comparison with C++ virtual methods.
-- Used built-in annotations, especially `@Override`.
-- Implemented upcasting and downcasting with inheritance examples.
-- Practiced safe downcasting using the `instanceof` operator.
-- Implemented object type-checking examples using `instanceof`.
+**Example:**
+
+```java
+class Parent {
+    void display() {
+        System.out.println("Parent");
+    }
+}
+
+class Child extends Parent {
+    void show() {
+        System.out.println("Child");
+    }
+}
+
+Parent obj = new Child();
+obj.display();
+```
+
+### B. Downcasting
+
+- Downcasting means converting a parent-class reference into a child-class reference.
+- It requires explicit type casting.
+- It allows access to members specific to the child class.
+- The actual object must be compatible with the target child type.
+- Invalid downcasting results in `ClassCastException`.
+- Practised converting parent references back into child references and accessing child-specific methods.
+
+**Example:**
+
+```java
+Parent obj = new Child();
+
+Child c = (Child) obj;
+c.show();
+```
+
+## 8. instanceof Operator
+
+- The `instanceof` operator checks whether an object is an instance of a particular class or implements a particular interface.
+- It returns a boolean value: `true` or `false`.
+- It is useful for checking object types before performing downcasting.
+- It supports type checking with inheritance and interfaces.
+- Checking a null reference using `instanceof` returns `false`.
+- Practised checking parent and child object relationships using `instanceof`.
+- Implemented safe downcasting by checking the object type before casting.
+
+**Syntax:**
+
+```java
+object instanceof ClassName
+```
+
+**Example:**
+
+```java
+class Parent {
+}
+
+class Child extends Parent {
+}
+
+class Main {
+    public static void main(String[] args) {
+
+        Parent obj = new Child();
+
+        if (obj instanceof Child) {
+            Child c = (Child) obj;
+            System.out.println("Downcasting successful");
+        }
+    }
+}
+```
+
+**Output:**
+
+```text
+Downcasting successful
+```
 
 ## Learning Outcomes
 
-- Gained a clear understanding of method overloading and overriding.
-- Understood the rules and limitations of method overriding.
-- Learned the difference between static binding and dynamic binding.
-- Understood how polymorphism works at compile time and runtime.
+- Understood method overloading and method overriding.
+- Learned the restrictions of overriding private, static, and final methods.
+- Understood method binding and method resolution.
+- Learned the concept of virtual methods and Java's dynamic method dispatch.
+- Understood compile-time and runtime polymorphism.
 - Learned the purpose and usage of Java annotations.
-- Gained practical knowledge of upcasting and downcasting.
-- Understood how to check object types using `instanceof`.
-- Learned how inheritance and dynamic method dispatch work together in Java.
+- Practised upcasting and downcasting.
+- Understood runtime type checking using the `instanceof` operator.
 
 ## Repository Contents
 
-- Java programs and practical examples
-- Method overloading and overriding programs
-- Static and dynamic binding examples
-- Polymorphism examples
-- Annotation examples
-- Upcasting and downcasting programs
-- `instanceof` operator examples
-- Class notes and supporting learning materials
+- Method overloading and overriding programs.
+- Static and dynamic binding examples.
+- Polymorphism and virtual method examples.
+- Java annotation examples.
+- Upcasting and downcasting programs.
+- `instanceof` operator examples.
+- Class notes and supporting practical files.
