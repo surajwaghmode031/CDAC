@@ -1,8 +1,10 @@
 package p1;
-//  topic multiple inheritance : solution of dimond problem
+//  topic multiple inheritance
+// 
 public class C implements A, B {
 	@Override
 	public double compute(double a1, double b1) {
+		//System.out.println(DATA); // javac err
 		System.out.println(A.DATA+" "+B.DATA);
 		return a1*b1;
 	}
