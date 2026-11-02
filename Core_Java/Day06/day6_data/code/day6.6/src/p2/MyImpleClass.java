@@ -1,6 +1,7 @@
 package p1;
 //  topic multiple inheritance : solution of dimond problem
-// same 2  method implemantation by 2 i/f -> we need to define only once in 
+// in i/f A and B : same name, same method signature , different return type ->  during method overloading : return type ignored 
+//  javac err : classic ambiguity -> in a class we cannot add method with same name, same method signature , different return type  -> solution i/f
 public class MyImpleClass implements A, B {
 	@Override
 	public void show() {
