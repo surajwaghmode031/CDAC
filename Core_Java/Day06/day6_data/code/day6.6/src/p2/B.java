@@ -1,5 +1,5 @@
-package p2;
+package p1;
 
 public interface B {
-	boolean checkPrime(int number);
+	double void show();
 }

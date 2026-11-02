@@ -1,5 +1,7 @@
-package p2;
+package p1;
 
 public interface A {
- void show();
+	int DATA = 100;
+	
+	void show();
 }
