@@ -1,7 +1,7 @@
 package p1;
 //  topic multiple inheritance
 // 
-public class C implements A, B {
+public class MyImpleClass implements A, B {
 	@Override
 	public double compute(double a1, double b1) {
 		//System.out.println(DATA); // javac err
