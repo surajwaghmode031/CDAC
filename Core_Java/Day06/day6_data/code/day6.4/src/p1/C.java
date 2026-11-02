@@ -1,5 +1,5 @@
 package p1;
-
+//  topic multiple inheritance : solution of dimond problem
 public class C implements A, B {
 	@Override
 	public double compute(double a1, double b1) {
