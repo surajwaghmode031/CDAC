@@ -1,6 +1,6 @@
 package p1;
 //  topic multiple inheritance
-// 
+//  implementing duplicate data -> from two interface
 public class MyImpleClass implements A, B {
 	@Override
 	public double compute(double a1, double b1) {
