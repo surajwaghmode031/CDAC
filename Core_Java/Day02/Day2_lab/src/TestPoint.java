@@ -22,7 +22,7 @@ return false;
 public double calculateDistance(Point2D point) {
 int dx = point.x - this.x;
 int dy = point.y - this.y;
-return Math.sqrt(dx * dx + dy * dy);
+return Math.sqrt(dx * dx + dy * dy); // Math is class in java.lang package
 }
 }
 
@@ -31,16 +31,16 @@ public class TestPoint{
 public static void main(String[]args){
 Point2D	 p1 = new Point2D(4,7);
 Point2D	 p2 = new Point2D(2,3);
-Syatem.out.println("p1("+p1.show()+")");
-Syatem.out.println("p2("+p2.show()+")");
+System.out.println("p1("+p1.show()+")");
+System.out.println("p2("+p2.show()+")");
 
 if(p1.isEqual(p2)){
-Syatem.out.println("Equals....!");
+System.out.println("Equals....!");
 }
 else{
-Syatem.out.println("not Equals....!");
-Syatem.out.println("Distance:"+p1.calculateDistance);
+System.out.println("not Equals....!");
 }
+  System.out.println("Distance:"+p1.calculateDistance);
 }
 
 }
