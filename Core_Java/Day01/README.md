@@ -147,6 +147,133 @@ JDK
 | JRE | Provide the runtime environment |
 | JVM | Execute Java bytecode |
 
+
+# How JDK, JRE, and JVM Work Together in Java
+
+JDK, JRE, and JVM are three important components of Java. They work together to **develop, compile, and execute Java programs**.
+
+## 1. JDK (Java Development Kit)
+
+- JDK is used to **develop Java applications**.
+- It provides tools required to write, compile, debug, and run Java programs.
+- It contains JRE (in traditional Java architecture) and development tools.
+
+**Important Tool:**
+
+- `javac` – Java compiler, which converts `.java` source code into `.class` bytecode.
+
+## 2. JRE (Java Runtime Environment)
+
+- JRE provides an environment to **run Java applications**.
+- It contains JVM and supporting Java libraries.
+- It does not traditionally include development tools like the `javac` compiler.
+
+**Main Purpose:** To provide everything required to execute Java programs.
+
+## 3. JVM (Java Virtual Machine)
+
+- JVM is responsible for **executing Java bytecode**.
+- It converts bytecode into machine-specific instructions using the interpreter and JIT compiler.
+- It manages memory and performs garbage collection.
+
+**Main Purpose:** To execute Java bytecode.
+
+## 4. How They Work Together
+
+Let's understand with an example.
+
+Suppose we write a Java program:
+
+### Step 1: Write Java Code
+
+Create a file named `Hello.java`.
+
+```java
+class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello Java");
+    }
+}
+```
+
+### Step 2: Compilation Using JDK
+
+Run:
+
+```bash
+javac Hello.java
+```
+
+- The JDK provides the `javac` compiler.
+- The compiler converts `Hello.java` into `Hello.class`.
+- The `.class` file contains bytecode.
+
+### Step 3: Execution Using JRE
+
+Run:
+
+```bash
+java Hello
+```
+
+- The JRE provides the runtime environment.
+- JVM loads and executes the bytecode.
+- Required Java libraries are also provided.
+
+### Step 4: Execution by JVM
+
+The JVM:
+
+1. Loads the `.class` file through the Class Loader.
+2. Verifies the bytecode.
+3. Executes bytecode using the interpreter and JIT compiler.
+4. Manages memory and garbage collection.
+
+**Output:**
+
+```text
+Hello Java
+```
+
+## 5. Relationship Between JDK, JRE, and JVM
+
+### Comparison
+
+| Component | Main Responsibility |
+|-----------|---------------------|
+| JDK | Develop, compile, and run Java programs |
+| JRE | Provide the environment to run Java programs |
+| JVM | Execute Java bytecode |
+
+### Traditional Java Architecture
+
+```text
+             JDK
+      (Development Kit)
+               |
+       +-------+-------+
+       |               |
+ Development          JRE
+    Tools       (Runtime Environment)
+       |               |
+   +---+---+           |
+   |       |           |
+ javac  Debugger       JVM
+                       |
+                 Executes Bytecode
+                       |
+                 Java Libraries
+```
+
+**Easy Way to Remember:**
+
+- JDK = Development + Runtime
+- JRE = Runtime Environment
+- JVM = Bytecode Execution
+
+**Note:** The JDK → JRE → JVM relationship represents the traditional Java architecture. Modern Java releases (Java 11 onwards) do not generally distribute a separate JRE as part of the standard JDK installation.
+
+
 - Understood how JDK, JRE, and JVM work together during Java development and execution.
 - Practised identifying Java development and runtime tools.
 
