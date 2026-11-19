@@ -265,6 +265,71 @@ is equivalent to:
 public abstract void print();
 ```
 
+
+### Types of Methods in an Interface
+
+- An interface can contain abstract methods, default methods, static methods, and private methods with implementations in modern Java.
+- Abstract methods do not have a method body.
+- Default methods contain an implementation and are declared using the `default` keyword.
+- Static methods contain an implementation and belong to the interface.
+- Private methods contain an implementation and are used internally within the interface.
+- Private static methods are also supported in interfaces.
+
+### Types of Interface Methods
+
+| Method Type | Implementation | Introduced In |
+|-------------|----------------|---------------|
+| Abstract Method | No implementation | Java 1.0 |
+| Default Method | Yes | Java 8 |
+| Static Method | Yes | Java 8 |
+| Private Method | Yes | Java 9 |
+| Private Static Method | Yes | Java 9 |
+
+### Example
+
+```java
+interface Vehicle {
+
+    // Abstract Method
+    void start();
+
+    // Default Method
+    default void display() {
+        System.out.println("Vehicle");
+    }
+
+    // Static Method
+    static void info() {
+        System.out.println("Vehicle Interface");
+    }
+
+    // Private Method
+    private void message() {
+        System.out.println("Private Method");
+    }
+
+    // Private Static Method
+    private static void show() {
+        System.out.println("Private Static Method");
+    }
+}
+```
+
+### Important Points
+
+- Abstract methods are implicitly `public abstract`.
+- Default methods are inherited by implementing classes.
+- Static methods are called using the interface name.
+- Private methods can only be accessed within the interface.
+- Private methods can be used by default and other interface methods.
+- Private static methods can be used internally by static methods of the interface.
+
+**Important for Interviews:**
+
+- Java 8 introduced default and static methods in interfaces.
+- Java 9 introduced private and private static methods in interfaces.
+
+
 **Important Points:**
 
 - Abstract interface methods are public by default.
