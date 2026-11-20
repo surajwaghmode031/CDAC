@@ -9,7 +9,7 @@ public class CurrentAccount extends BankAccount{
 	}
      
 	public void useOverdraftFacility(double amount) {
-		if (amount<=overdraftLimit) {
+		if ((getBalance()-amount)<=overdraftLimit) {
 			setBalance(getBalance()-amount);
 			  System.out.println("Overdraft used: " + amount);
         } else {
