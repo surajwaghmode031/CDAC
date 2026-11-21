@@ -20,6 +20,8 @@ public class Test1 {
 			System.out.println("1");
 		} catch (NumberFormatException e) {
 			System.out.println("2");
+		// } catch (ArithmeticException e | NullPointerException e) {     // multicatch block
+		// 	System.out.println("2");
 		} catch (Exception e) {
 			System.out.println("in catch all");
 			System.out.println(e.getMessage());
