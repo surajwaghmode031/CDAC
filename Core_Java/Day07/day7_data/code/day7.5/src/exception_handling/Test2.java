@@ -9,7 +9,7 @@ public class Test2 {
 		try {
 			sc= new Scanner(System.in);
 			System.out.println("Enter number");
-			System.out.println("Number " + sc.nextInt());
+			System.out.println("Number " + sc.nextInt()); // if we enter wrong input then err occures but sc hold resourse and we want to close if err occcurs or not  hence we colse s using finally 
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
