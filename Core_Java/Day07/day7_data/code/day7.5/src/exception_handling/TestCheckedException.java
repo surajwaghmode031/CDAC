@@ -8,7 +8,7 @@ public class TestCheckedException {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		try {
+		try {                                                        // checked exception is handled by using try catch 
 			System.out.println("Enter name of the file to read");
 			FileReader reader = new FileReader(sc.nextLine());
 			System.out.println("end of try....");
