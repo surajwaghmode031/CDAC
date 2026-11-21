@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class TestCheckedException2 {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException {  // chhecked exception is deligating to caller by using throws keyword
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter name of the file to read");
 		FileReader reader = new FileReader(sc.nextLine());
