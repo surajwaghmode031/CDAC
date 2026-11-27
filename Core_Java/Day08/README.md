@@ -56,14 +56,14 @@ Hello Java
 - In the first operation, the returned String is not assigned, so `str` remains unchanged.
 - In the second operation, the new String reference is assigned to `str`.
 
-#### Important Characteristics of String
+**Important Characteristics of String:**
 
 - String objects are immutable.
 - String literals can be stored in the String Constant Pool.
 - Strings can be created using literals or the `new` keyword.
 - The `String` class provides methods for searching, comparing, extracting, and modifying text by creating new String objects.
 
-#### Common String Methods
+**Common String Methods:**
 
 | Method | Purpose |
 |---|---|
@@ -131,19 +131,15 @@ public class Main {
         StringBuilder sb = new StringBuilder("Hello");
 
         sb.append(" Java");
-
         System.out.println(sb);
 
         sb.insert(5, " Core");
-
         System.out.println(sb);
 
         sb.replace(0, 5, "Welcome");
-
         System.out.println(sb);
 
         sb.reverse();
-
         System.out.println(sb);
     }
 }
@@ -158,7 +154,7 @@ Welcome Core Java
 avaJ eroC emocleW
 ```
 
-#### Common StringBuilder Methods
+**Common StringBuilder Methods:**
 
 | Method | Purpose |
 |---|---|
@@ -172,7 +168,7 @@ avaJ eroC emocleW
 | `length()` | Returns the number of characters |
 | `setCharAt()` | Changes a character at a specified index |
 
-#### Characteristics of StringBuilder
+**Characteristics of StringBuilder:**
 
 - Mutable sequence of characters.
 - Efficient for repeated String modifications.
@@ -200,15 +196,12 @@ public class Main {
         StringBuffer sb = new StringBuffer("Hello");
 
         sb.append(" Java");
-
         System.out.println(sb);
 
         sb.insert(5, " Core");
-
         System.out.println(sb);
 
         sb.reverse();
-
         System.out.println(sb);
     }
 }
@@ -222,15 +215,15 @@ Hello Core Java
 avaJ eroC olleH
 ```
 
-#### Characteristics of StringBuffer
+**Characteristics of StringBuffer:**
 
 - Mutable sequence of characters.
 - Provides synchronized methods.
 - Thread-safe for its synchronized individual operations.
-- Suitable when a mutable string is shared across multiple threads.
+- Suitable when mutable text is shared across multiple threads.
 - Can have synchronization overhead compared with StringBuilder.
 
-#### String vs StringBuilder vs StringBuffer
+**String vs StringBuilder vs StringBuffer**
 
 | Feature | String | StringBuilder | StringBuffer |
 |---|---|---|---|
@@ -240,7 +233,7 @@ avaJ eroC olleH
 | Performance for repeated modifications | Usually less efficient | Generally faster | Synchronization overhead |
 | Typical usage | Fixed or rarely modified text | Single-threaded modifications | Shared mutable text |
 
-Practiced using all three classes and understanding the differences in mutability, synchronization, and performance.
+Practiced using all three classes and understanding their differences in mutability, synchronization, and performance.
 
 ---
 
@@ -285,7 +278,7 @@ false
 
 #### b. equals() Method
 
-The `equals()` method is used to compare object contents when the class provides a suitable implementation.
+The `equals()` method compares object contents when the class provides a suitable implementation.
 
 The String class overrides `equals()` to compare the actual character sequences.
 
@@ -319,9 +312,7 @@ true
 | For references, checks identity | String overrides it to check content |
 | Cannot be overridden | Can be overridden |
 
-**Important Point:**
-
-The default implementation of `Object.equals()` checks object identity. Classes such as `String` override it to provide content-based comparison.
+**Important Point:** The default implementation of `Object.equals()` checks object identity. Classes such as `String` override it to provide content-based comparison.
 
 Practiced comparing String objects using `==` and `equals()` and understanding reference equality versus content equality.
 
@@ -418,16 +409,7 @@ true
 - Their contents are identical.
 - Therefore, `==` returns `false`, while `equals()` returns `true`.
 
-#### String Literal vs Non-Literal
-
-| String Literal | Non-Literal |
-|---|---|
-| Created using double quotes | Explicitly created using `new String()` |
-| Uses String Constant Pool | Creates a separate String object |
-| Identical literals can share a pooled object | Each `new String()` creates a distinct object |
-| Example: `"Java"` | Example: `new String("Java")` |
-
-#### intern() Method
+#### c. intern() Method
 
 The `intern()` method returns the canonical String from the String Constant Pool.
 
@@ -456,21 +438,242 @@ false
 true
 ```
 
+#### String Literal vs Non-Literal
+
+| String Literal | Non-Literal |
+|---|---|
+| Created using double quotes | Explicitly created using `new String()` |
+| Uses String Constant Pool | Creates a separate String object |
+| Identical literals can share a pooled object | Each `new String()` creates a distinct object |
+| Example: `"Java"` | Example: `new String("Java")` |
+
 Practiced creating literal and non-literal String objects, comparing their references, and understanding the purpose of `intern()`.
 
 ---
 
-### 4. Date and Time Handling in Java
+### 4. Date and Time Handling in Java – Date Class
 
-Java provides APIs for working with dates, times, timestamps, and time zones.
+Java provides classes to represent, manipulate, parse, and format date and time values.
 
-The modern Date and Time API is available in the `java.time` package and was introduced in Java 8.
+Initially, Java used the legacy Date and Calendar API from the `java.util` package.
+
+The `Date` class represents a specific instant in time, with precision to milliseconds.
+
+#### a. Date Class
+
+The `Date` class belongs to the `java.util` package.
+
+**Example:**
+
+```java
+import java.util.Date;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Date d1 = new Date();
+
+        System.out.println(d1);
+
+        Date d2 = new Date(0);
+
+        System.out.println(d2);
+    }
+}
+```
+
+**Output (illustrative):**
+
+```text
+Fri Nov 27 18:10:00 IST 2026
+Thu Jan 01 00:00:00 UTC 1970
+```
+
+**Explanation:**
+
+- `new Date()` creates an object representing the current date and time.
+- `new Date(0)` represents the Unix epoch instant: January 1, 1970, at 00:00:00 UTC.
+- The Date object internally represents time as milliseconds from the Unix epoch.
+- The displayed date depends on the system's default time zone.
+
+#### b. Common Date Methods
+
+| Method | Purpose |
+|---|---|
+| `new Date()` | Creates the current date and time |
+| `getTime()` | Returns milliseconds since the epoch |
+| `before(date)` | Checks whether a date is before another |
+| `after(date)` | Checks whether a date is after another |
+| `equals(date)` | Compares two Date objects |
+| `toString()` | Returns a String representation of the date |
+
+**Example:**
+
+```java
+import java.util.Date;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Date d1 = new Date();
+
+        System.out.println(d1);
+        System.out.println(d1.getTime());
+        System.out.println(d1.toString());
+    }
+}
+```
+
+**Important Points:**
+
+- `Date` is a legacy class.
+- It represents an instant in time rather than a date-only value.
+- Its older component manipulation methods are deprecated.
+- It is still used in older Java applications and APIs.
+
+---
+
+### 5. Parsing and Formatting Date Using SimpleDateFormat
+
+When working with dates, we often need to convert a date object into a String or convert a String into a date object.
+
+These operations are called formatting and parsing.
+
+#### a. SimpleDateFormat
+
+`SimpleDateFormat` belongs to the `java.text` package.
+
+It is used to parse and format date values according to a specified pattern.
+
+**Syntax:**
+
+```java
+SimpleDateFormat sdf =
+        new SimpleDateFormat("dd-MM-yyyy");
+```
+
+#### b. Formatting
+
+**Formatting** means converting a Date object into a String representation in a required pattern.
+
+**Example:**
+
+```java
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Date date = new Date();
+
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("dd-MM-yyyy");
+
+        String formattedDate = sdf.format(date);
+
+        System.out.println(formattedDate);
+    }
+}
+```
+
+**Output (date-dependent):**
+
+```text
+27-11-2026
+```
+
+**Explanation:**
+
+- `new Date()` creates the current date and time.
+- `SimpleDateFormat` defines the required date pattern.
+- `format()` converts the Date object into a String.
+- The resulting String follows the specified pattern.
+
+#### c. Parsing
+
+**Parsing** means converting a String containing a date into a Date object.
+
+The `parse()` method is used for this operation.
+
+**Example:**
+
+```java
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+public class Main {
+
+    public static void main(String[] args)
+            throws ParseException {
+
+        String dateString = "27-11-2026";
+
+        SimpleDateFormat sdf =
+                new SimpleDateFormat("dd-MM-yyyy");
+
+        Date date = sdf.parse(dateString);
+
+        System.out.println(date);
+    }
+}
+```
+
+**Explanation:**
+
+- `dateString` contains the date in String format.
+- `SimpleDateFormat` defines how the String should be interpreted.
+- `parse()` converts the String into a Date object.
+- `ParseException` can occur when the String cannot be parsed.
+
+**Note:** By default, `SimpleDateFormat` may accept some date values that are out of range by adjusting them. Use `setLenient(false)` when strict validation is required.
+
+#### d. Common SimpleDateFormat Patterns
+
+| Pattern | Meaning | Example |
+|---|---|---|
+| `dd` | Day of month | `27` |
+| `MM` | Month number | `11` |
+| `MMM` | Short month name | `Nov` |
+| `MMMM` | Full month name | `November` |
+| `yyyy` | Year | `2026` |
+| `HH` | Hour in 24-hour format | `18` |
+| `hh` | Hour in 12-hour format | `06` |
+| `mm` | Minutes | `10` |
+| `ss` | Seconds | `45` |
+| `a` | AM/PM marker | `PM` |
+
+**Important:** Uppercase `MM` represents the month, whereas lowercase `mm` represents minutes.
+
+#### e. Parsing vs Formatting
+
+| Parsing | Formatting |
+|---|---|
+| String to Date object | Date object to String |
+| Uses `parse()` | Uses `format()` |
+| Converts text into a date | Converts a date into readable text |
+
+Practiced creating Date objects, converting dates into formatted Strings, and parsing String values into Date objects using `SimpleDateFormat`.
+
+---
+
+### 6. Modern Date and Time API – java.time Package
+
+Java 8 introduced the modern Date and Time API in the `java.time` package.
+
+The modern API provides separate classes for dates, times, date-time combinations, and time zones.
+
+It is designed to overcome many limitations of the older Date and Calendar APIs.
 
 #### Important Classes in java.time
 
 | Class | Purpose |
 |---|---|
-| `LocalDate` | Represents a date without time or time zone |
+| `LocalDate` | Represents date without time or time zone |
 | `LocalTime` | Represents time without date or time zone |
 | `LocalDateTime` | Represents date and time without time zone |
 | `ZonedDateTime` | Represents date and time with a time zone |
@@ -498,7 +701,8 @@ public class Main {
 
         System.out.println(today);
 
-        LocalDate date = LocalDate.of(2026, 11, 27);
+        LocalDate date =
+                LocalDate.of(2026, 11, 27);
 
         System.out.println(date);
     }
@@ -512,7 +716,7 @@ public class Main {
 2026-11-27
 ```
 
-#### Common LocalDate Methods
+**Common LocalDate Methods:**
 
 | Method | Purpose |
 |---|---|
@@ -537,7 +741,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LocalDate date = LocalDate.of(2026, 11, 27);
+        LocalDate date =
+                LocalDate.of(2026, 11, 27);
 
         System.out.println(date.getYear());
         System.out.println(date.getMonth());
@@ -561,351 +766,4 @@ NOVEMBER
 
 #### b. LocalTime
 
-`LocalTime` represents time without a date or time zone.
-
-**Example:**
-
-```java
-import java.time.LocalTime;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        LocalTime time = LocalTime.now();
-
-        System.out.println(time);
-
-        LocalTime customTime = LocalTime.of(10, 30, 45);
-
-        System.out.println(customTime);
-    }
-}
-```
-
-#### c. LocalDateTime
-
-`LocalDateTime` combines a date and time without storing time-zone information.
-
-**Example:**
-
-```java
-import java.time.LocalDateTime;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        LocalDateTime current = LocalDateTime.now();
-
-        System.out.println(current);
-
-        LocalDateTime custom =
-                LocalDateTime.of(2026, 11, 27, 10, 30);
-
-        System.out.println(custom);
-    }
-}
-```
-
-#### d. ZonedDateTime
-
-`ZonedDateTime` represents a date and time along with a time zone.
-
-**Example:**
-
-```java
-import java.time.ZonedDateTime;
-import java.time.ZoneId;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        ZonedDateTime dateTime =
-                ZonedDateTime.now(ZoneId.of("Asia/Kolkata"));
-
-        System.out.println(dateTime);
-    }
-}
-```
-
-Practiced obtaining current dates and times, creating custom date-time values, and using date-time classes for different requirements.
-
----
-
-### 5. Parsing and Formatting of Date
-
-Date parsing and formatting are important operations when working with date and time values.
-
-#### a. Parsing
-
-**Parsing** means converting a String representation of a date or time into a date-time object.
-
-Java uses the `parse()` method for this purpose.
-
-**Example Using LocalDate:**
-
-```java
-import java.time.LocalDate;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        String dateString = "2026-11-27";
-
-        LocalDate date = LocalDate.parse(dateString);
-
-        System.out.println(date);
-    }
-}
-```
-
-**Output:**
-
-```text
-2026-11-27
-```
-
-#### Parsing Using a Custom Format
-
-When the date String uses a format other than the default ISO format, use `DateTimeFormatter`.
-
-**Example:**
-
-```java
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        String dateString = "27-11-2026";
-
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        LocalDate date =
-                LocalDate.parse(dateString, formatter);
-
-        System.out.println(date);
-    }
-}
-```
-
-**Output:**
-
-```text
-2026-11-27
-```
-
-#### b. Formatting
-
-**Formatting** means converting a date-time object into a String representation in a required pattern.
-
-Java provides the `format()` method and `DateTimeFormatter`.
-
-**Example:**
-
-```java
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        LocalDate date = LocalDate.of(2026, 11, 27);
-
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        String formattedDate = date.format(formatter);
-
-        System.out.println(formattedDate);
-    }
-}
-```
-
-**Output:**
-
-```text
-27/11/2026
-```
-
-#### Common Date Formatting Patterns
-
-| Pattern | Meaning | Example |
-|---|---|---|
-| `dd` | Day of month | `27` |
-| `MM` | Month number | `11` |
-| `MMM` | Short month name | `Nov` |
-| `MMMM` | Full month name | `November` |
-| `yyyy` | Year | `2026` |
-| `HH` | Hour in 24-hour format | `14` |
-| `hh` | Hour in 12-hour format | `02` |
-| `mm` | Minutes | `30` |
-| `ss` | Seconds | `45` |
-| `a` | AM/PM marker | `PM` |
-
-**Important:** Use uppercase `MM` for month and lowercase `mm` for minutes.
-
-#### Parsing vs Formatting
-
-| Parsing | Formatting |
-|---|---|
-| String to date-time object | Date-time object to String |
-| Uses `parse()` | Uses `format()` |
-| Example: `LocalDate.parse()` | Example: `date.format()` |
-
-Practiced converting date Strings into `LocalDate` objects and formatting date objects into different String representations.
-
----
-
-### 6. Why Do We Use LocalDate Instead of SimpleDateFormat?
-
-Java provides two generations of date and time APIs:
-
-1. Legacy API – `Date`, `Calendar`, and `SimpleDateFormat`.
-2. Modern API – `java.time` classes such as `LocalDate`, `LocalTime`, and `LocalDateTime`.
-
-The modern API was introduced in Java 8 to provide a more reliable and easier approach to date and time handling.
-
-#### a. SimpleDateFormat
-
-`SimpleDateFormat` belongs to the legacy `java.text` package.
-
-It is used to parse and format date values.
-
-**Example:**
-
-```java
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        Date date = new Date();
-
-        SimpleDateFormat sdf =
-                new SimpleDateFormat("dd-MM-yyyy");
-
-        System.out.println(sdf.format(date));
-    }
-}
-```
-
-#### b. LocalDate and DateTimeFormatter
-
-The modern API uses `LocalDate` with `DateTimeFormatter`.
-
-**Example:**
-
-```java
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        LocalDate date = LocalDate.now();
-
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        System.out.println(date.format(formatter));
-    }
-}
-```
-
-#### Why Prefer LocalDate?
-
-**1. Immutability**
-
-- `LocalDate` objects are immutable.
-- Date operations return new objects instead of modifying the original.
-- This makes date handling easier to reason about.
-
-**2. Thread Safety**
-
-- `LocalDate` and `DateTimeFormatter` are immutable and thread-safe.
-- `SimpleDateFormat` is mutable and not thread-safe when shared between threads without external synchronization.
-
-**3. Clear API Design**
-
-- `LocalDate` represents only a date.
-- `LocalTime` represents only a time.
-- `LocalDateTime` represents date and time.
-- `ZonedDateTime` includes time-zone information.
-
-This avoids mixing unrelated date and time information.
-
-**4. Easy Date Calculations**
-
-Modern date classes provide convenient methods such as:
-
-- `plusDays()`
-- `minusDays()`
-- `plusMonths()`
-- `isBefore()`
-- `isAfter()`
-
-**5. Better Formatting and Parsing**
-
-`DateTimeFormatter` provides a modern API for parsing and formatting date-time values.
-
-#### Comparison: SimpleDateFormat vs LocalDate
-
-| Feature | SimpleDateFormat | LocalDate |
-|---|---|---|
-| Package | `java.text` | `java.time` |
-| Introduced | Legacy Java API | Java 8 |
-| Mutability | Mutable | Immutable |
-| Thread safety | Not thread-safe when shared | Thread-safe |
-| Represents | Formats/parses legacy Date values | Date without time or zone |
-| Formatting | `format()` | Used with `DateTimeFormatter` |
-| Parsing | `parse()` | `LocalDate.parse()` |
-
-**Important Clarification:**
-
-`LocalDate` and `SimpleDateFormat` are not direct replacements for each other.
-
-- `LocalDate` represents a date.
-- `SimpleDateFormat` is a formatting and parsing class.
-- The modern replacement for `SimpleDateFormat` is `DateTimeFormatter`.
-- For modern Java applications, prefer the `java.time` API.
-
-Practiced using both legacy and modern date APIs and understood why Java 8 date-time classes are generally preferred for new applications.
-
----
-
-## Learning Outcomes
-
-- Understood String handling in Java.
-- Learned the differences between String, StringBuilder, and StringBuffer.
-- Practiced common String methods and String modification operations.
-- Understood reference equality using `==` and content equality using `equals()`.
-- Learned the difference between String literals and objects created using `new`.
-- Understood the String Constant Pool and the purpose of `intern()`.
-- Learned date and time handling using the `java.time` package.
-- Practiced using LocalDate, LocalTime, LocalDateTime, and ZonedDateTime.
-- Understood date parsing and formatting using DateTimeFormatter.
-- Learned the differences between legacy date handling and the modern Java Date and Time API.
-- Understood why LocalDate and DateTimeFormatter are preferred in modern Java applications.
-
-## Repository Contents
-
-- String handling programs.
-- StringBuilder and StringBuffer examples.
-- String comparison using `==` and `equals()`.
-- String literal and non-literal examples.
-- String Constant Pool and `intern()` examples.
-- LocalDate, LocalTime, and LocalDateTime programs.
-- Date parsing and formatting examples.
-- SimpleDateFormat and DateTimeFormatter comparison examples.
-- Class notes and supporting learning materials.
+`Local
