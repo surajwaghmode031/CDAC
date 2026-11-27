@@ -26,7 +26,7 @@ public class ValidationRules {
 	
 	// validate email
 	public static void validateEmail(String email) throws EmployeeHandlingException {
-		if (!email.contains("@")) {
+		if (!email.contains("@") && !email.contains(".com")) {
 			throw new EmployeeHandlingException("Invalid email");
 		}
 	}
